@@ -1,0 +1,96 @@
+
+/* Estilos para el sidebar */
+.sidebar {
+    position: fixed;
+    top: 56px; /* Altura del navbar superior */
+    left: 0;
+    width: 200px;
+    height: calc(100vh - 56px);
+    background-color: #212529;
+    padding-top: 1rem;
+    z-index: 1000;
+    transition: all 0.3s;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+/* Ajuste del contenido principal */
+.main-content {
+    margin-left: 200px;
+    padding: 20px;
+    margin-top: 56px;
+    transition: all 0.3s;
+}
+
+.main-content.expanded {
+    margin-left: 60px;
+}
+
+/* Estilos para los enlaces del sidebar */
+.sidebar .nav-link {
+    color: rgba(255,255,255,.55);
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.sidebar .nav-link:hover {
+    color: rgba(255,255,255,.75);
+}
+
+.sidebar .nav-link.active {
+    color: white;
+}
+
+/* Estilos para las secciones del sidebar */
+.sidebar-section {
+    margin-bottom: 1rem;
+}
+
+.sidebar-heading {
+    color: #6c757d;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Estilos para el botón de colapsar */
+#sidebarCollapse {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1001;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+/* Ocultar texto cuando el sidebar está colapsado */
+.sidebar.collapsed .nav-link span,
+.sidebar.collapsed .sidebar-heading {
+    display: none;
+}
+
+/* Centrar iconos cuando el sidebar está colapsado */
+.sidebar.collapsed .nav-link {
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.sidebar.collapsed .nav-link i {
+    margin-right: 0;
+}
+
+/* Estilos para los tooltips */
+.tooltip-inner {
+    background-color: #f8f9fa;
+    color: #212529;
+    border: 1px solid #dee2e6;
+}
+
+.bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow::before, 
+.bs-tooltip-end .tooltip-arrow::before {
+    border-right-color: #dee2e6;
+}
