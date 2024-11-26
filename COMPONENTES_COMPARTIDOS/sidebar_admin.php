@@ -34,18 +34,18 @@
 
     <!-- ADDONS -->
     <div class="sidebar-section">
-        <div class="sidebar-heading">ADDONS</div>
+        <div class="sidebar-heading">PRESTAMOS</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Charts">
+                <a class="nav-link" href="../ADMINISTRADOR/simular_admin.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Charts">
                     <i class="bi bi-graph-up me-2"></i>
-                    <span>Charts</span>
+                    <span>Simular</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Tables">
                     <i class="bi bi-table me-2"></i>
-                    <span>Tables</span>
+                    <span>Informes</span>
                 </a>
             </li>
         </ul>

@@ -37,7 +37,7 @@
         <div class="sidebar-heading">PRESTAMOS</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Simular">
+                <a class="nav-link" href="../USUARIO/simular_usuario.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Simular">
                     <i class="bi bi-graph-up me-2"></i>
                     <span>Simular</span>
                 </a>

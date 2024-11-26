@@ -18,7 +18,7 @@
 
     <!-- Contenido Principal -->
     <div class="main-content" id="mainContent">
-        <h1>HOLA MUNDO</h1>
+        <?php include '../COMPONENTES_COMPARTIDOS/simulador.php'; ?>
         <!-- Aquí va el contenido de tu dashboard -->
     </div>
 

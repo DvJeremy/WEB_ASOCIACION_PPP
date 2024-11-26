@@ -10,15 +10,15 @@
 </head>
 <body>
 
-    <?php include '../COMPONENTES_COMPARTIDOS/navbar_admin.php'; ?>
-    <?php include '../COMPONENTES_COMPARTIDOS/sidebar_admin.php'; ?>
+    <?php include '../COMPONENTES_COMPARTIDOS/navbar_usuario.php'; ?>
+    <?php include '../COMPONENTES_COMPARTIDOS/sidebar_usuario.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JS/componentes_compartidos.js"></script>
 
     <!-- Contenido Principal -->
     <div class="main-content" id="mainContent">
-        <h1>HOLA MUNDO</h1>
+        <?php include '../COMPONENTES_COMPARTIDOS/simulador.php'; ?>
         <!-- Aquí va el contenido de tu dashboard -->
     </div>
 
