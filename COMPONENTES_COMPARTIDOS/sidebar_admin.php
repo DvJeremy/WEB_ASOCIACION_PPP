@@ -15,18 +15,18 @@
 
     <!-- INTERFACE -->
     <div class="sidebar-section">
-        <div class="sidebar-heading">INTERFACE</div>
+        <div class="sidebar-heading">USUARIOS</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Layouts">
+                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Administrar">
                     <i class="bi bi-grid me-2"></i>
-                    <span>Layouts</span>
+                    <span>Administrar</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Pages">
+                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Informes">
                     <i class="bi bi-file-text me-2"></i>
-                    <span>Pages</span>
+                    <span>Informes</span>
                 </a>
             </li>
         </ul>
@@ -34,18 +34,18 @@
 
     <!-- ADDONS -->
     <div class="sidebar-section">
-        <div class="sidebar-heading">ADDONS</div>
+        <div class="sidebar-heading">PRESTAMOS</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Charts">
+                <a class="nav-link" href="../ADMINISTRADOR/simular_admin.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Simular">
                     <i class="bi bi-graph-up me-2"></i>
-                    <span>Charts</span>
+                    <span>Simular</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Tables">
+                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Informes">
                     <i class="bi bi-table me-2"></i>
-                    <span>Tables</span>
+                    <span>Informes</span>
                 </a>
             </li>
         </ul>

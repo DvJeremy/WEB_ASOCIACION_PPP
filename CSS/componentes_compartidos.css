@@ -94,3 +94,10 @@
 .bs-tooltip-end .tooltip-arrow::before {
     border-right-color: #dee2e6;
 }
+
+/* Boton simulador*/
+
+.btn-outline-dark:hover {
+    background-color: #343a40;
+    color: white;
+}
