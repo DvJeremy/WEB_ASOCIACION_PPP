@@ -15,17 +15,17 @@
             <div class="card-body d-flex flex-column justify-content-center align-items-center">
                 <h3 class="card-title text-center mb-4" style="font-family:Century Gothic; font-weight: bold;">Iniciar Sesión</h3>
                 <i class="fa-solid fa-user-large fa-4x" style="color: #0b5289;"></i>
-                <form class="w-100">
+                <form class="w-100" action="enviardatos.php" method="post">
                     <div class="mb-3">
                         <label for="username" class="form-label" style="font-family:Century Gothic;">Usuario</label>
-                        <input type="text" class="form-control" id="username" placeholder="Ingrese el usuario">
+                        <input type="text" name="user" class="form-control" id="username" placeholder="Ingrese el usuario">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label" style="font-family:Century Gothic;">Contraseña</label>
-                        <input type="password" class="form-control rounded-3" id="password" placeholder="Ingrese la contraseña">
+                        <input type="password" name="pass" class="form-control rounded-3" id="password" placeholder="Ingrese la contraseña">
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-lg rounded-5" style="background-color: #003366; border-color: #003366;">Ingresar</button>
+                        <button type="submit" name="btnEntrar" class="btn btn-primary btn-lg rounded-5" style="background-color: #003366; border-color: #003366;">Ingresar</button>
                     </div>    
                 </form>
                 <div class="text-center mt-3">
