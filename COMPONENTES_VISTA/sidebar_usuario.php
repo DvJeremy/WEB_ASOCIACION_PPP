@@ -15,18 +15,18 @@
 
     <!-- INTERFACE -->
     <div class="sidebar-section">
-        <div class="sidebar-heading">INTERFACE</div>
+        <div class="sidebar-heading">CONSULTAR</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Layouts">
+                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Información personal">
                     <i class="bi bi-grid me-2"></i>
-                    <span>Layouts</span>
+                    <span>Información personal</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Pages">
-                    <i class="bi bi-file-text me-2"></i>
-                    <span>Pages</span>
+                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Contribución">
+                    <i class="bi bi-table me-2"></i>
+                    <span>Contribución</span>
                 </a>
             </li>
         </ul>
@@ -34,18 +34,18 @@
 
     <!-- ADDONS -->
     <div class="sidebar-section">
-        <div class="sidebar-heading">ADDONS</div>
+        <div class="sidebar-heading">PRESTAMOS</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Charts">
+                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Simular">
                     <i class="bi bi-graph-up me-2"></i>
-                    <span>Charts</span>
+                    <span>Simular</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Tables">
-                    <i class="bi bi-table me-2"></i>
-                    <span>Tables</span>
+                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Solicitar">
+                    <i class="bi bi-file-text me-2"></i>
+                    <span>Solicitar</span>
                 </a>
             </li>
         </ul>
