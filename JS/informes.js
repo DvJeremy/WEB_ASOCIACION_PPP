@@ -1,8 +1,10 @@
-// ------ INICIO CONTADORES ------
 document.addEventListener("DOMContentLoaded", () => {
-    // Cargar los contadores
     cargarContadores();
     cargarTablaSocios();
+
+    // Escuchar el cambio en los filtros
+    document.getElementById("orden").addEventListener("change", filtrarYOrdenarTabla);
+    document.getElementById("busqueda").addEventListener("input", filtrarYOrdenarTabla);
 
     // Cargar los contadores
     function cargarContadores() {
@@ -25,29 +27,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Cargar la tabla de socios y aportes
     function cargarTablaSocios() {
+        filtrarYOrdenarTabla();
+    }
+
+    // Función para renderizar la tabla con los datos filtrados y ordenados
+    function renderizarTabla(data) {
+        const tablaBody = document.querySelector("#tabla-socios tbody");
+        tablaBody.innerHTML = '';  // Limpiar las filas de la tabla
+    
+        const filas = data.map(socio => {
+            return `
+                <tr>
+                    <td>${socio.dni_socio}</td>      <!-- DNI -->
+                    <td>${socio.nombres}</td>        <!-- Nombre -->
+                    <td>${socio.apellidos}</td>      <!-- Apellido -->
+                    <td>${socio.total_aportes.toFixed(2)}</td> <!-- Total Aportes -->
+                </tr>`;
+        }).join('');  // Crear todas las filas y unirlas en un solo string
+    
+        tablaBody.innerHTML = filas;  // Insertar las filas al mismo tiempo
+    }    
+
+    // Función que se activa con los filtros (ordenar y búsqueda)
+    function filtrarYOrdenarTabla() {
+        const busqueda = document.getElementById("busqueda").value; // Obtener el texto de búsqueda
+        const orden = document.getElementById("orden").value; // Obtener el tipo de orden
+
         fetch("../ADMINISTRADOR/informes_backend.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: "accion=obtener_socios_aportes"
+            body: `accion=obtener_socios_aportes&busqueda=${busqueda}&orden=${orden}`
         })
         .then(response => response.json())
         .then(data => {
             if (data.estado === "ok") {
-                const tablaBody = document.querySelector("#tabla-socios tbody");
-                tablaBody.innerHTML = '';  // Limpiar las filas de la tabla
-
-                const filas = data.data.map(socio => {
-                    return `
-                        <tr>
-                            <td>${socio.nombres}</td>
-                            <td>${socio.apellidos}</td>
-                            <td>${socio.total_aportes.toFixed(2)}</td>
-                        </tr>`;
-                }).join('');  // Crear todas las filas y unirlas en un solo string
-
-                tablaBody.innerHTML = filas;  // Insertar las filas al mismo tiempo
+                renderizarTabla(data.data); // Renderizar la tabla con los datos filtrados y ordenados
             } else {
                 console.error("Error al cargar los datos de la tabla:", data.mensaje);
             }
@@ -55,4 +71,3 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Error al cargar la tabla:", error));
     }
 });
-// ------ FIN CONTADORES ------

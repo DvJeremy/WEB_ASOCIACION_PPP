@@ -50,3 +50,22 @@ table tr:hover {
     margin-top: 30px;
 }
 /* ------ FIN TABLA SOCIOS Y APORTES ------ */
+
+/* ------ INICIO FILTROS ------ */
+.card .form-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.card .form-control,
+.card .form-select {
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card .form-control:focus,
+.card .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+/* ------ FIN FILTROS ------ */
