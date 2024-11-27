@@ -1,3 +1,13 @@
+<?php
+session_start(); // Inicia o reanuda la sesión
+
+if (!isset($_SESSION['user_id'])) {
+    // Si no hay sesión activa, redirige al login
+    header("Location: login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

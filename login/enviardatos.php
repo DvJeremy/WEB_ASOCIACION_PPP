@@ -16,13 +16,12 @@ if (isset($_POST['btnEntrar'])){
         $row = mysqli_fetch_array($resultado);
         $_SESSION["id"]= $row['username'];
         $_SESSION["cod"]= $row['id_usuario'];
-        header("location: prueba.html");
-        
+
+        header("Location: prueba.php");
     }else{
         echo "<script>";
         echo "alert('Usuario o contraseña incorrecta! Intentelo de nuevo...')";
         echo "</script>";
     }  
-   
    }
-?> 
+?>
