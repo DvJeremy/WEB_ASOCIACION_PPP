@@ -37,12 +37,18 @@
 
     <!-- ADDONS -->
     <div class="sidebar-section">
-        <div class="sidebar-heading">PRESTAMOS</div>
+        <div class="sidebar-heading">OPERACIONES</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="../ADMINISTRADOR/simular_admin.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Simular">
+                <a class="nav-link" href="../ADMINISTRADOR/simular_admin.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Generar prestamo">
                     <i class="bi bi-graph-up me-2"></i>
-                    <span>Simular</span>
+                    <span>Generar prestamo</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../ADMINISTRADOR/informes_admin.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Recaudar">
+                    <i class="bi bi-file-text me-2"></i>
+                    <span>Recaudar</span>
                 </a>
             </li>
         </ul>

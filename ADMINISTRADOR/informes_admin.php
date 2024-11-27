@@ -18,7 +18,7 @@
 
     <!-- Contenido Principal -->
     <div class="main-content" id="mainContent">
-            <br><br>
+            <br>
                 <!-- ------ INICIO CONTADORES ------ -->
                 <div class="row text-center mb-5">
             <div class="col-md-3">
@@ -56,29 +56,94 @@
         </div>
         <!-- ------ FIN CONTADORES ------ -->
 
-        <!-- ------ INICIO TABLA SOCIOS Y APORTES --------- -->
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">Socios y Aportes</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered" id="tabla-socios">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Total Aportes (S/)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Filas de la tabla generadas dinámicamente -->
-                        </tbody>
-                    </table>
+        <!-- ------ INICIO TABLA SOCIOS Y FILTROS -------- -->
+        <div class="row">
+            <!-- Tabla de socios y aportes -->
+            <div class="col-lg-9">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Socios y Aportes</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered" id="tabla-socios">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>DNI</th>
+                                        <th>Nombre</th>
+                                        <th>Apellidos</th>
+                                        <th>Total Aportes (S/)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Filas de la tabla generadas dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- ------ FIN TABLA SOCIOS Y APORTES --------- -->
+            
+            <!-- Filtros -->
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">Filtros</h5>
+                    </div>
+                    <div class="card-body">
+
+                        <!-- Otros Filtros -->
+                        <div class="mb-4">
+                            <label for="busqueda" class="form-label">Buscar</label>
+                            <input type="text" id="busqueda" class="form-control" placeholder="DNI, Nombre o Apellido">
+                        </div>
+
+                        <!-- Ordenamiento -->
+                        <div>
+                            <label for="orden" class="form-label">Ordenar por Aportes</label>
+                            <select id="orden" class="form-select">
+                                <option value="ninguno">Ninguno</option>
+                                <option value="mayor">Mayor a Menor</option>
+                                <option value="menor">Menor a Mayor</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        <!-- ------ FIN TABLA SOCIOS Y FILTROS -------- -->
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <!-- ------ INICIO HISTORIAL DE ACTIVIDAD DE USUARIOS ------ -->
+        
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">
+                            <h4 class="mb-0">Historial de Actividad de Usuarios</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered" id="tabla-historial">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>DNI</th>
+                                            <th>Nombre</th>
+                                            <th>Apellidos</th>
+                                            <th>Fecha de Pago</th>
+                                            <th>Monto (S/)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Filas de la tabla generadas dinámicamente -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- ------ FIN HISTORIAL DE ACTIVIDAD DE USUARIOS ------ -->
 
     </div>
 
