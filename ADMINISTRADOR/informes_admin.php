@@ -83,7 +83,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <!-- Filtros -->
             <div class="col-lg-3">
                 <div class="card">
@@ -91,7 +91,13 @@
                         <h5 class="mb-0">Filtros</h5>
                     </div>
                     <div class="card-body">
-                        <!-- Búsqueda -->
+                        <!-- Filtro de Fecha de Pago -->
+                        <div class="mb-4">
+                            <label for="fechaPago" class="form-label">Fecha de Pago</label>
+                            <input type="date" id="fechaPago" class="form-control">
+                        </div>
+
+                        <!-- Otros Filtros -->
                         <div class="mb-4">
                             <label for="busqueda" class="form-label">Buscar</label>
                             <input type="text" id="busqueda" class="form-control" placeholder="DNI, Nombre o Apellido">
@@ -109,8 +115,39 @@
                     </div>
                 </div>
             </div>
-        </div>
+
         <!-- ------ FIN TABLA SOCIOS Y FILTROS -------- -->
+        
+        <!-- ------ INICIO HISTORIAL DE ACTIVIDAD DE USUARIOS ------ -->
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h4 class="mb-0">Historial de Actividad de Usuarios</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered" id="tabla-historial">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>DNI</th>
+                                        <th>Nombre</th>
+                                        <th>Apellidos</th>
+                                        <th>Fecha de Pago</th>
+                                        <th>Monto (S/)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Filas de la tabla generadas dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------ FIN HISTORIAL DE ACTIVIDAD DE USUARIOS ------ -->
 
     </div>
 

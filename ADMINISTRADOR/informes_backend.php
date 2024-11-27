@@ -3,6 +3,7 @@
 include '../BACKEND/CONEXION/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Obtener contadores
     if (isset($_POST['accion']) && $_POST['accion'] == 'obtener_contadores') {
         // ------ INICIO CONTADORES ------
         $data = [
@@ -43,8 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // ------ INICIO TABLA SOCIOS Y APORTES ---------
-    if ($_POST['accion'] === 'obtener_socios_aportes') {
-        $filtroBusqueda = isset($_POST['busqueda']) ? $_POST['busqueda'] : ''; // Filtro de búsqueda
+    if (isset($_POST['accion']) && $_POST['accion'] === 'obtener_socios_aportes') {
+        $filtroBusqueda = isset($_POST['busqueda']) ? $conexion->real_escape_string($_POST['busqueda']) : ''; // Filtro de búsqueda
         $orden = isset($_POST['orden']) ? $_POST['orden'] : 'ninguno'; // Orden de los aportes
     
         // Construir la consulta SQL con los filtros y orden
@@ -90,8 +91,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
         exit;
     }
-    
+
     // ------ FIN TABLA SOCIOS Y APORTES ---------
+
+    // ------ INICIO HISTORIAL DE ACTIVIDAD DE USUARIOS ---------
+    if ($_POST['accion'] === 'obtener_historial_actividad') {
+        $filtroBusqueda = isset($_POST['busqueda']) ? $_POST['busqueda'] : ''; // Filtro de búsqueda
+
+        // Consulta para el historial de pagos
+        $queryHistorial = "
+            SELECT 
+                socios.dni_socio, 
+                socios.nombres, 
+                socios.apellidos, 
+                cuota_afiliacion.fecha_pago, 
+                cuota_afiliacion.monto
+            FROM cuota_afiliacion
+            LEFT JOIN socios ON cuota_afiliacion.dni_socio = socios.dni_socio
+            WHERE 
+                (socios.nombres LIKE '%$filtroBusqueda%' 
+                OR socios.apellidos LIKE '%$filtroBusqueda%' 
+                OR socios.dni_socio LIKE '%$filtroBusqueda%')
+            ORDER BY cuota_afiliacion.fecha_pago DESC
+        ";
+
+        $resultado = $conexion->query($queryHistorial);
+
+        if ($resultado) {
+            $data = [];
+            while ($fila = $resultado->fetch_assoc()) {
+                $data[] = [
+                    'dni_socio' => $fila['dni_socio'],
+                    'nombres' => $fila['nombres'],
+                    'apellidos' => $fila['apellidos'],
+                    'fecha_pago' => $fila['fecha_pago'],
+                    'monto' => (float) $fila['monto']
+                ];
+            }
+
+            echo json_encode(['estado' => 'ok', 'data' => $data]);
+        } else {
+            echo json_encode(['estado' => 'error', 'mensaje' => 'Error en la consulta del historial.']);
+        }
+
+        exit;
+    }
+    // ------ FIN HISTORIAL DE ACTIVIDAD DE USUARIOS ---------
+
 }
 
 ?>
