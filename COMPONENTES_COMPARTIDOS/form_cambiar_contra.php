@@ -1,3 +1,10 @@
+<?php 
+include("../BACKEND/CONEXION/conexion.php");
+session_start();
+   if(isset($_SESSION['tex'])){
+   $texto=$_SESSION['tex'];}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

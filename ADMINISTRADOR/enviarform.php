@@ -20,8 +20,10 @@ include("../BACKEND/CONEXION/conexion.php");
     $fecha=$_POST['fecha'];
     $usuario=$_POST['usuario'];
     $contra=$_POST['contra'];
-    $contra=$_POST['tipo_usuario'];
+    $tipo_usuario=$_POST['tipo_usuario'];
     $estado=$_POST['estado'];
+
+    $hashed_password = password_hash($contra, PASSWORD_DEFAULT);
 
     $consulta= "SELECT * FROM tipos_socios WHERE tipo_socio='$tipo_socio'";
     $resultado=mysqli_query($conexion,$consulta);
@@ -31,7 +33,7 @@ include("../BACKEND/CONEXION/conexion.php");
     $consulta="INSERT INTO socios(dni_socio,nombres,apellidos,fecha_ingreso,numero_cuenta,codigo_universidad,id_tipo_socio) VALUES('$dni','$nombre',' $apellido','$fecha','$cuenta','$codigo',$idtipo_socio)";
     $resultado=mysqli_query($conexion,$consulta) or die("Error de registro1");
 
-    $consulta="INSERT INTO usuarios(id_usuario,username,contra,tipo_usuario,dni_socio,estado_usuario) VALUES(null,'$usuario',' $contra','$tipo_usuario','$dni','$estado')";
+    $consulta="INSERT INTO usuarios(id_usuario,username,contra,tipo_usuario,dni_socio,estado_usuario) VALUES(null,'$usuario','$hashed_password','$tipo_usuario','$dni','$estado')";
     $resultado=mysqli_query($conexion,$consulta) or die("Error de registro2");
     
     mysqli_close($conexion);
