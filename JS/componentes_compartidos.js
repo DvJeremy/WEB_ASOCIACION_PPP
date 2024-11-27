@@ -1,6 +1,6 @@
 function handleLogout() {
-    // Añade aquí tu lógica de cierre de sesión
     console.log('Cerrando sesión...');
+    window.location.href = '../login/login.php';
 }
 
 document.addEventListener('DOMContentLoaded', function() {

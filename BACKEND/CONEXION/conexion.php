@@ -1,8 +1,11 @@
 <?php
-  $host="localhost";
-  $nombre="entidad";
-  $usuario="root";
-  $contra="";  
-  $conexion=mysqli_connect($host,$usuario,$contra,$nombre)or die("Error de conexion") ;
+  $host = "localhost";
+  $nombre = "entidad";
+  $usuario = "root";
+  $contra = "";
   
+  $conn = new mysqli($host, $usuario, $contra, $nombre);
+  if ($conn->connect_error) {
+      die("Conexión fallida: " . $conn->connect_error);
+  }
 ?> 

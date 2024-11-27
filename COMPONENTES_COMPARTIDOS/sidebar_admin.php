@@ -2,13 +2,10 @@
 <div class="sidebar" id="sidebar">
     <!-- CORE -->
     <div class="sidebar-section">
-        <div class="sidebar-heading">CORE</div>
+        <div class="sidebar-heading">BIENVENIDO</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link " href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
-                    <i class="bi bi-speedometer2 me-2"></i>
-                    <span>Dashboard</span>
-                </a>
+                
             </li>
         </ul>
     </div>
@@ -30,7 +27,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Informes">
+                <a class="nav-link" href="../ADMINISTRADOR/informes_admin.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Informes">
                     <i class="bi bi-file-text me-2"></i>
                     <span>Informes</span>
                 </a>
@@ -46,12 +43,6 @@
                 <a class="nav-link" href="../ADMINISTRADOR/simular_admin.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Simular">
                     <i class="bi bi-graph-up me-2"></i>
                     <span>Simular</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Informes">
-                    <i class="bi bi-file-text me-2"></i>
-                    <span>Informes</span>
                 </a>
             </li>
         </ul>
