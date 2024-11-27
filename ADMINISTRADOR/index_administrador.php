@@ -1,10 +1,20 @@
 <?php
+include("../BACKEND/CONEXION/conexion.php");
 session_start(); // Inicia o reanuda la sesión
 
-if (!isset($_SESSION['user_id'])) {
+if (isset($_SESSION['id'])) {
     // Si no hay sesión activa, redirige al login
-    header("Location: login.php");
-    exit();
+    //header("Location: ../LOGIN/login.php");
+    $user = $_SESSION["id"];
+   
+    $consulta= "SELECT username FROM usuarios WHERE username = '$user'";
+    $resultado= mysqli_query($conexion,$consulta);
+   
+    $fila = mysqli_fetch_array($resultado);
+    $uss  = $fila['username'];
+   
+    $texto = " | " ."Usuario: " .$uss;
+	$_SESSION['tex']=$texto;
 }
 ?>
 
@@ -29,8 +39,22 @@ if (!isset($_SESSION['user_id'])) {
     <!-- Contenido Principal -->
     <div class="main-content" id="mainContent">
         <h1>HOLA MUNDO</h1>
+        <div class="sesion">
+       <ul>
+         <li><?php if(isset($texto)){
+			   echo "<html>";
+			   echo "<a class='boton' href='form_cambiar_contra.php' >Cerrar Sesion</a>";
+			   echo "</html>";
+		      }else{
+				  echo "<html>";
+				  echo "<a class='boton' href='login/menuregistro.php' >Iniciar Sesion</a>";
+				  echo "</html>";
+			  }  ?></li>
+		 <li><?php if(isset($texto)) {echo $texto;} ?></li>
+       </ul>
+     </div>
         <!-- Aquí va el contenido de tu dashboard -->
     </div>
-
+   <!--  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>-->
 </body>
 </html>
