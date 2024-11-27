@@ -5,7 +5,7 @@
         <div class="sidebar-heading">CORE</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
+                <a class="nav-link " href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
                     <i class="bi bi-speedometer2 me-2"></i>
                     <span>Dashboard</span>
                 </a>

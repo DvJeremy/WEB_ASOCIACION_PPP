@@ -53,7 +53,7 @@
                      </select>
                   </div>
                   <div class="mb-3">
-                    <label for="fechaRegistro" class="form-label">Fecha de Registro</label>
+                    <label for="fechaRegistro" class="form-label">Fecha de Ingreso</label>
                     <input type="date" class="form-control" id="fechaRegistro" name="fecha" required>
                   </div>
              </div>
@@ -79,7 +79,7 @@
                         <option value="Usuario">Usuario</option>
                      </select>
                   </div>
-                  <label class="form-label"  for="">Estado de socio</label>
+                  <label class="form-label"  for="">Estado de usuario</label>
                   <div class="form-check">
                      <input class="form-check-input" type="radio" name="estado" value="Activo" id="flexRadioDefault2" >
                      <label class="form-check-label" for="flexRadioDefault2">

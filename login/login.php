@@ -28,9 +28,6 @@
                         <button type="submit" name="btnEntrar" class="btn btn-primary btn-lg rounded-5" style="background-color: #003366; border-color: #003366;">Ingresar</button>
                     </div>    
                 </form>
-                <div class="text-center mt-3">
-                 <!--<p>¿No tienes cuenta? <a href="registro.php" class="text-decoration-none fw-bold" style="color: #d35400;">Regístrate aquí</a></p>-->
-                </div>
             </div>
         </div>
     </div>

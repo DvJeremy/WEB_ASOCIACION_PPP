@@ -5,7 +5,7 @@
         <div class="sidebar-heading">CORE</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
+                <a class="nav-link " href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
                     <i class="bi bi-speedometer2 me-2"></i>
                     <span>Dashboard</span>
                 </a>
@@ -18,8 +18,14 @@
         <div class="sidebar-heading">USUARIOS</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Administrar">
+                <a class="nav-link" href="../ADMINISTRADOR/registro_usuario.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Registrar">
                     <i class="bi bi-grid me-2"></i>
+                    <span>Registrar</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Administrar">
+                    <i class="bi bi-table me-2"></i>
                     <span>Administrar</span>
                 </a>
             </li>
@@ -44,7 +50,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Informes">
-                    <i class="bi bi-table me-2"></i>
+                    <i class="bi bi-file-text me-2"></i>
                     <span>Informes</span>
                 </a>
             </li>
