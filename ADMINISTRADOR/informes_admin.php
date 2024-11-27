@@ -18,7 +18,7 @@
 
     <!-- Contenido Principal -->
     <div class="main-content" id="mainContent">
-            <br><br>
+            <br>
                 <!-- ------ INICIO CONTADORES ------ -->
                 <div class="row text-center mb-5">
             <div class="col-md-3">
@@ -91,11 +91,6 @@
                         <h5 class="mb-0">Filtros</h5>
                     </div>
                     <div class="card-body">
-                        <!-- Filtro de Fecha de Pago -->
-                        <div class="mb-4">
-                            <label for="fechaPago" class="form-label">Fecha de Pago</label>
-                            <input type="date" id="fechaPago" class="form-control">
-                        </div>
 
                         <!-- Otros Filtros -->
                         <div class="mb-4">
@@ -115,38 +110,39 @@
                     </div>
                 </div>
             </div>
-
+            
         <!-- ------ FIN TABLA SOCIOS Y FILTROS -------- -->
-        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
         <!-- ------ INICIO HISTORIAL DE ACTIVIDAD DE USUARIOS ------ -->
         
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header bg-info text-white">
-                        <h4 class="mb-0">Historial de Actividad de Usuarios</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered" id="tabla-historial">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>DNI</th>
-                                        <th>Nombre</th>
-                                        <th>Apellidos</th>
-                                        <th>Fecha de Pago</th>
-                                        <th>Monto (S/)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Filas de la tabla generadas dinámicamente -->
-                                </tbody>
-                            </table>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">
+                            <h4 class="mb-0">Historial de Actividad de Usuarios</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered" id="tabla-historial">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>DNI</th>
+                                            <th>Nombre</th>
+                                            <th>Apellidos</th>
+                                            <th>Fecha de Pago</th>
+                                            <th>Monto (S/)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Filas de la tabla generadas dinámicamente -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         <!-- ------ FIN HISTORIAL DE ACTIVIDAD DE USUARIOS ------ -->
 
     </div>
