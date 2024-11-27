@@ -46,7 +46,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../ADMINISTRADOR/informes_admin.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Recaudar">
+                <a class="nav-link" href="../ADMINISTRADOR/recaudar.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Recaudar">
                     <i class="bi bi-file-text me-2"></i>
                     <span>Recaudar</span>
                 </a>
