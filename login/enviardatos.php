@@ -17,7 +17,7 @@ if (isset($_POST['btnEntrar'])){
         $_SESSION["id"]= $row['username'];
         $_SESSION["cod"]= $row['id_usuario'];
 
-        header("Location: prueba.php");
+        header("Location: ../ADMINISTRADOR/index_administrador.php");
     }else{
         echo "<script>";
         echo "alert('Usuario o contraseña incorrecta! Intentelo de nuevo...')";
