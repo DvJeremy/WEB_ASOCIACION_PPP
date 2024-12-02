@@ -12,7 +12,7 @@
 
     <?php include '../COMPONENTES_COMPARTIDOS/navbar_admin.php'; ?>
     <?php include '../COMPONENTES_COMPARTIDOS/sidebar_admin.php'; ?>
-
+    <br>
     <div class="container">
         <h1 class="my-4">Recaudar Cuota</h1>
 
@@ -43,7 +43,10 @@
             <!-- Los socios seleccionados aparecerán aquí -->
         </ul>
 
-        <button id="btn-recaudar" class="btn btn-success mt-4">Recaudar</button>
+        <div class="d-flex justify-content-end mt-4">
+            <button id="recaudarButton" class="btn btn-primary">Recaudar</button>
+        </div>
+        <br><br>
     </div>
 
     <!-- Ventana emergente para seleccionar el monto -->
@@ -65,6 +68,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JS/recaudar.js"></script>
-
+    <script src="../JS/componentes_compartidos.js"></script>
 </body>
 </html>

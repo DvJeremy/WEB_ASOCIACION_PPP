@@ -128,4 +128,43 @@ document.addEventListener("DOMContentLoaded", function () {
             listItem.remove();
         });
     }
+
+    // Configurar botón "Recaudar"
+    const btnRecaudar = document.getElementById("recaudarButton");
+    btnRecaudar.addEventListener("click", function () {
+        const listaSocios = document.getElementById("lista-socios");
+        const sociosSeleccionados = [...listaSocios.children].map(item => ({
+            dni: item.dataset.dni,
+            monto: parseInt(item.textContent.match(/Monto: S\/ (\d+)/)[1]) // Extraer el monto del texto
+        }));
+
+        if (sociosSeleccionados.length === 0) {
+            alert("No hay socios seleccionados para recaudar.");
+            return;
+        }
+
+        // Enviar datos al backend
+        fetch("../ADMINISTRADOR/recaudar_backend.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ socios: sociosSeleccionados })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Cuotas recaudadas exitosamente.");
+                    listaSocios.innerHTML = ""; // Limpiar la lista
+                } else {
+                    alert(`Error al recaudar: ${data.error}`);
+                }
+            })
+            .catch(error => {
+                console.error("Error en la solicitud:", error);
+                alert("Error al procesar la solicitud.");
+            });
+    });
 });
+
+
