@@ -15,6 +15,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JS/componentes_compartidos.js"></script>
+    <script src="../JS/simular_admin.js"></script>
 
     <!-- Contenido Principal -->
     <div class="main-content" id="mainContent">
