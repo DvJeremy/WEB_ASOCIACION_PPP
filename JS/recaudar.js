@@ -161,9 +161,18 @@ document.addEventListener("DOMContentLoaded", function () {
                         return;
                     }
 
+                    const sociosDuplicados = [];
                     data.forEach(socio => {
-                        agregarSocio(socio.dni, socio.nombres, socio.apellidos, socio.monto);
+                        if ([...document.querySelector("#lista-socios").children].some(item => item.dataset.dni === socio.dni)) {
+                            sociosDuplicados.push(socio.dni); // Duplicado encontrado
+                        } else {
+                            agregarSocio(socio.dni, socio.nombres, socio.apellidos, socio.monto);
+                        }
                     });
+
+                    if (sociosDuplicados.length > 0) {
+                        alert(`Los siguientes socios ya están en la lista: ${sociosDuplicados.join(", ")}`);
+                    }
                 })
                 .catch(error => {
                     console.error("Error al procesar el archivo Excel:", error);
@@ -186,6 +195,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (sociosSeleccionados.length === 0) {
             alert("No hay socios seleccionados para recaudar.");
             return;
+        }
+
+        // Confirmar antes de continuar
+        const confirmacion = confirm("¿Está seguro de que desea recaudar las cuotas seleccionadas?");
+        if (!confirmacion) {
+            return; // Si el usuario cancela, no se realiza la recaudación
         }
 
         fetch("../ADMINISTRADOR/recaudar_backend.php", {
