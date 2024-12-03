@@ -29,3 +29,22 @@
 .modal-body button {
     margin: 5px;
 }
+
+/* Nuevo estilo para mensajes de error o éxito */
+.alert-message {
+    display: none; /* Inicialmente oculto */
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}

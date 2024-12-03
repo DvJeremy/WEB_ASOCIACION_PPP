@@ -3,46 +3,74 @@
 include '../BACKEND/CONEXION/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Decodificar el JSON recibido
     $input = json_decode(file_get_contents('php://input'), true);
 
-    if (!isset($input['socios']) || !is_array($input['socios'])) {
-        echo json_encode(["error" => "Datos inválidos."]);
-        exit;
-    }
+    if (isset($input['socios_excel'])) {
+        // Proceso para manejar los socios cargados desde el Excel
+        $sociosExcel = $input['socios_excel'];
+        $sociosDetalles = [];
 
-    $socios = $input['socios'];
-    $fechaPago = date('Y-m-d'); // Fecha actual
-
-    // Iniciar transacción
-    $conexion->begin_transaction();
-
-    try {
-        foreach ($socios as $socio) {
+        foreach ($sociosExcel as $socio) {
             $dni = $conexion->real_escape_string($socio['dni']);
             $monto = intval($socio['monto']);
 
-            // Insertar en la tabla cuota_afiliacion
+            // Buscar nombres y apellidos del socio en la base de datos
             $query = "
-                INSERT INTO cuota_afiliacion (dni_socio, monto, fecha_pago)
-                VALUES ('$dni', $monto, '$fechaPago')
+                SELECT nombres, apellidos 
+                FROM socios 
+                WHERE dni_socio = '$dni'
             ";
-            if (!$conexion->query($query)) {
-                throw new Exception("Error al insertar cuota: " . $conexion->error);
+
+            $result = $conexion->query($query);
+
+            if ($result && $result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $sociosDetalles[] = [
+                    'dni' => $dni,
+                    'nombres' => $row['nombres'],
+                    'apellidos' => $row['apellidos'],
+                    'monto' => $monto
+                ];
             }
         }
 
-        // Confirmar transacción
-        $conexion->commit();
-        echo json_encode(["success" => true]);
-    } catch (Exception $e) {
-        // Revertir transacción en caso de error
-        $conexion->rollback();
-        echo json_encode(["error" => $e->getMessage()]);
+        echo json_encode($sociosDetalles);
+        $conexion->close();
+        exit;
     }
 
-    $conexion->close();
-    exit;
+    if (isset($input['socios'])) {
+        // Proceso para registrar los pagos en la base de datos
+        $socios = $input['socios'];
+        $fechaPago = date('Y-m-d'); // Fecha actual
+
+        $conexion->begin_transaction();
+
+        try {
+            foreach ($socios as $socio) {
+                $dni = $conexion->real_escape_string($socio['dni']);
+                $monto = intval($socio['monto']);
+
+                // Insertar en la tabla cuota_afiliacion
+                $query = "
+                    INSERT INTO cuota_afiliacion (dni_socio, monto, fecha_pago)
+                    VALUES ('$dni', $monto, '$fechaPago')
+                ";
+                if (!$conexion->query($query)) {
+                    throw new Exception("Error al insertar cuota: " . $conexion->error);
+                }
+            }
+
+            $conexion->commit();
+            echo json_encode(["success" => true]);
+        } catch (Exception $e) {
+            $conexion->rollback();
+            echo json_encode(["error" => $e->getMessage()]);
+        }
+
+        $conexion->close();
+        exit;
+    }
 }
 
 // Código para manejar solicitudes GET

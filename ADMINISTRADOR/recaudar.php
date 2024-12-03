@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recaudar Cuota</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../CSS/recaudar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../CSS/componentes_compartidos.css">
+    <link rel="stylesheet" href="../CSS/recaudar.css">
 </head>
 <body>
 
     <?php include '../COMPONENTES_COMPARTIDOS/navbar_admin.php'; ?>
     <?php include '../COMPONENTES_COMPARTIDOS/sidebar_admin.php'; ?>
-    <br>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JS/componentes_compartidos.js"></script>
+
+    <div class="main-content" id="mainContent">
     <div class="container">
         <h1 class="my-4">Recaudar Cuota</h1>
 
@@ -36,6 +41,10 @@
                 <!-- Los socios se cargarán aquí con JavaScript -->
             </tbody>
         </table>
+
+        <br>
+        <input type="file" id="cargarExcel" accept=".xlsx, .xls"/>
+        <button id="cargarListado" class="btn btn-primary">Cargar listado</button>
 
         <!-- Lista de Socios Seleccionados -->
         <h3 class="mt-4">Socios Seleccionados</h3>
@@ -65,9 +74,9 @@
             </div>
         </div>
     </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JS/recaudar.js"></script>
-    <script src="../JS/componentes_compartidos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 </body>
 </html>
