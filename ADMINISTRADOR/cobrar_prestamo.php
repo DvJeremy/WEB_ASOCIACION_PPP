@@ -16,6 +16,7 @@
     <?php include '../COMPONENTES_COMPARTIDOS/sidebar_admin.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
     <script src="../JS/componentes_compartidos.js"></script>
 
     <div class="main-content" id="mainContent">
@@ -51,6 +52,15 @@
             </table>
         </div>
 
+        <!-- Formulario para subir el archivo Excel -->
+        <div class="container mt-4">
+            <h4>Cargar Socios desde Excel</h4>
+            <form id="uploadForm">
+                <input type="file" id="excelFile" class="form-control" accept=".xlsx,.xls" />
+                <button type="submit" class="btn btn-primary mt-2">Cargar Socios</button>
+            </form>
+        </div>
+
         <!-- Lista de socios seleccionados -->
         <div class="container mt-4">
             <h4>Socios Seleccionados para Cobro</h4>
@@ -60,6 +70,7 @@
         </div>
     </div>
 
+    <!-- Incluir el archivo JavaScript para la carga de Excel -->
     <script src="../JS/cobrar_prestamo.js"></script>
 
 </body>
