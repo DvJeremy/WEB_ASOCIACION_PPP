@@ -30,8 +30,8 @@ include("../BACKEND/CONEXION/conexion.php");
 	  $fila = mysqli_fetch_array($resultado);
 	  $idtipo_socio=$fila['id_tipo_socio'];
 
-    $consulta="INSERT INTO socios(dni_socio,nombres,apellidos,fecha_ingreso,numero_cuenta,codigo_universidad,id_tipo_socio) VALUES('$dni','$nombre',' $apellido','$fecha','$cuenta','$codigo',$idtipo_socio)";
-    $resultado=mysqli_query($conexion,$consulta) or die("Error de registro1");
+    $consulta="INSERT INTO socios(dni_socio,nombres,apellidos,fecha_ingreso,numero_cuenta,codigo_universidad,id_tipo_socio) VALUES('$dni','$nombre','$apellido','$fecha','$cuenta','$codigo',$idtipo_socio)";
+    $resultado=mysqli_query($conexion,$consulta) or die("Error de registro1". mysqli_error($conexion));
 
     $consulta="INSERT INTO usuarios(id_usuario,username,contra,tipo_usuario,dni_socio,estado_usuario) VALUES(null,'$usuario','$hashed_password','$tipo_usuario','$dni','$estado')";
     $resultado=mysqli_query($conexion,$consulta) or die("Error de registro2");
