@@ -6,7 +6,7 @@ if (isset($_POST['btnEntrar'])){
     $usuario=$_POST['user'];
     $contra=$_POST['pass'];
     
-    $consulta="SELECT id_usuario,username, contra FROM usuarios WHERE username='$usuario'";
+    $consulta="SELECT id_usuario,username,tipo_usuario, contra FROM usuarios WHERE username='$usuario'";
     
     $resultado= mysqli_query($conexion,$consulta);
    
@@ -19,10 +19,17 @@ if (isset($_POST['btnEntrar'])){
           exit;*/
         if (password_verify($contra, $row['contra'])){
            session_start();
-           //$row = mysqli_fetch_array($resultado);
            $_SESSION["id"]= $row['username'];
            $_SESSION["cod"]= $row['id_usuario'];
-           header("Location: ../ADMINISTRADOR/index_administrador.php");
+           $_SESSION["us"]= $row['tipo_usuario'];
+
+           if ($_SESSION["us"]='Admin'){
+            header("Location: ../ADMINISTRADOR/index_administrador.php");
+           }elseif ($_SESSION["us"]='Usuario'){
+            header("Location: ../USUARIO/index_usuario.php");
+           }
+
+           //header("Location: ../ADMINISTRADOR/index_administrador.php");
            
         }else{
            echo "<script>";
