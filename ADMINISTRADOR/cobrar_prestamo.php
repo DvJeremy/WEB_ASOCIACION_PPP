@@ -68,10 +68,16 @@
                 <!-- Los socios seleccionados se agregarán aquí -->
             </ul>
         </div>
+
+        <!-- Botón para cobrar cuotas -->
+        <div class="container mt-4">
+            <button id="cobrarCuotaBtn" class="btn btn-success mt-3">Cobrar Cuota</button>
+        </div>
     </div>
 
     <!-- Incluir el archivo JavaScript para la carga de Excel -->
     <script src="../JS/cobrar_prestamo.js"></script>
+    <script src="../JS/cobrar_cuota.js"></script>
 
 </body>
 
