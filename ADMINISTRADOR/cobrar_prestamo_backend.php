@@ -35,22 +35,26 @@ if ($accion == 'cancelar' && $id_prestamo) {
 
 if ($dni) {
     // Obtener información del socio para un DNI específico
-    $sql = "SELECT p.id_prestamo, s.dni_socio, s.nombres, s.apellidos, p.monto, COUNT(i.id_cuota) AS cuotas_pendientes, p.cuota_mensual
+    $sql = "SELECT p.id_prestamo, s.dni_socio, s.nombres, s.apellidos, p.monto, 
+                   COUNT(i.id_cuota) AS cuotas_pendientes, p.cuota_mensual
             FROM socios s
             JOIN prestamos p ON s.dni_socio = p.dni_socio
             JOIN informacion_prestamo i ON p.id_prestamo = i.id_prestamo
             WHERE p.estado_prestamo = 'activo'
+            AND i.estado_cuota = 'pendiente'  -- Solo contar cuotas pendientes
             AND s.dni_socio = ?
             GROUP BY p.id_prestamo, s.dni_socio, s.nombres, s.apellidos, p.monto";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param('s', $dni);
 } else {
     // Obtener todos los socios con préstamos activos con filtro
-    $sql = "SELECT p.id_prestamo, s.dni_socio, s.nombres, s.apellidos, p.monto, COUNT(i.id_cuota) AS cuotas_pendientes, p.cuota_mensual
+    $sql = "SELECT p.id_prestamo, s.dni_socio, s.nombres, s.apellidos, p.monto, 
+                   COUNT(i.id_cuota) AS cuotas_pendientes, p.cuota_mensual
             FROM socios s
             JOIN prestamos p ON s.dni_socio = p.dni_socio
             JOIN informacion_prestamo i ON p.id_prestamo = i.id_prestamo
             WHERE p.estado_prestamo = 'activo'
+            AND i.estado_cuota = 'pendiente'  -- Solo contar cuotas pendientes
             AND (s.dni_socio LIKE ? OR s.nombres LIKE ? OR s.apellidos LIKE ?)
             GROUP BY p.id_prestamo, s.dni_socio, s.nombres, s.apellidos, p.monto";
     $stmt = $conexion->prepare($sql);
