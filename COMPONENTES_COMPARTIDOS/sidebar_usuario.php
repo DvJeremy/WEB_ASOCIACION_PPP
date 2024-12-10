@@ -1,7 +1,48 @@
+<?php
+include("../BACKEND/CONEXION/conexion.php");
+session_start(); // Inicia o reanuda la sesión
+
+if (isset($_SESSION['id'])) {
+    // Si no hay sesión activa, redirige al login
+    //header("Location: ../LOGIN/login.php");
+    $user = $_SESSION["id"];
+
+    $consulta = "SELECT username FROM usuarios WHERE username = '$user'";
+    $resultado = mysqli_query($conexion, $consulta);
+
+    $fila = mysqli_fetch_array($resultado);
+    $uss  = $fila['username'];
+
+    $texto = $uss;
+    $_SESSION['tex'] = $texto;
+}
+?>
+
+<head>
+    <!-- Otros enlaces de CSS y meta etiquetas -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> <!-- Librería de íconos -->
+</head>
+
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar">
     <!-- CORE -->
     <div class="sidebar-section">
+    <div class="sidebar-section">
+        <div class="sidebar-heading">BIENVENIDO
+        <div style="margin-top: 10px;">
+        <li style="color: white; font-weight: bold; list-style: none;font-family:Century Gothic;">
+        <i class="bi bi-person-lines-fill me-2"></i>
+            | 
+            <?php if (isset($texto)) {
+                        echo $texto;
+                    } ?></li></div>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">      
+            </li>
+        </ul>
+     </div>
+
         <div class="sidebar-heading">CORE</div>
         <ul class="nav flex-column">
             <li class="nav-item">

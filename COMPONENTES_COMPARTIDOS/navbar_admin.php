@@ -7,7 +7,7 @@
             <div class="dropdown">
                 <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-person-circle me-2"></i>
-                    Administrador
+                    //Administrador
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item" href="../COMPONENTES_COMPARTIDOS/form_cambiar_contra.php">Cambiar contraseña</a></li>
