@@ -51,6 +51,12 @@
                     <span>Recaudar</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../ADMINISTRADOR/cobrar_prestamo.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Cobrar prestamo">
+                    <i class="bi bi-file-text me-2"></i>
+                    <span>Cobrar prestamo</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
