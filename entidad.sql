@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-12-2024 a las 03:22:05
+-- Tiempo de generación: 09-12-2024 a las 09:22:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -141,6 +141,7 @@ CREATE TABLE `informacion_prestamo` (
   `saldo_inicial` decimal(10,2) DEFAULT NULL,
   `saldo_final` decimal(10,2) DEFAULT NULL,
   `estado_cuota` varchar(50) DEFAULT NULL,
+  `fecha_cobro` date DEFAULT NULL,
   `id_prestamo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -148,26 +149,28 @@ CREATE TABLE `informacion_prestamo` (
 -- Volcado de datos para la tabla `informacion_prestamo`
 --
 
-INSERT INTO `informacion_prestamo` (`id_cuota`, `n°_cuota`, `saldo_inicial`, `saldo_final`, `estado_cuota`, `id_prestamo`) VALUES
-('1-1', 1, 10000.00, 6666.67, 'pendiente', 1),
-('1-2', 2, 6666.67, 3333.33, 'pendiente', 1),
-('1-3', 3, 3333.33, 0.00, 'pendiente', 1),
-('2-1', 1, 15000.00, 11250.00, 'pendiente', 2),
-('2-2', 2, 11250.00, 7500.00, 'pendiente', 2),
-('2-3', 3, 7500.00, 3750.00, 'pendiente', 2),
-('2-4', 4, 3750.00, 0.00, 'pendiente', 2),
-('3-1', 1, 20000.00, 16000.00, 'pendiente', 3),
-('3-2', 2, 16000.00, 12000.00, 'pendiente', 3),
-('3-3', 3, 12000.00, 8000.00, 'pendiente', 3),
-('3-4', 4, 8000.00, 4000.00, 'pendiente', 3),
-('3-5', 5, 4000.00, 0.00, 'pendiente', 3),
-('4-1', 1, 25000.00, 16666.67, 'pendiente', 4),
-('4-2', 2, 16666.67, 8333.33, 'pendiente', 4),
-('4-3', 3, 8333.33, 0.00, 'pendiente', 4),
-('5-1', 1, 12000.00, 9000.00, 'pendiente', 5),
-('5-2', 2, 9000.00, 6000.00, 'pendiente', 5),
-('5-3', 3, 6000.00, 3000.00, 'pendiente', 5),
-('5-4', 4, 3000.00, 0.00, 'pendiente', 5);
+INSERT INTO `informacion_prestamo` (`id_cuota`, `n°_cuota`, `saldo_inicial`, `saldo_final`, `estado_cuota`, `fecha_cobro`, `id_prestamo`) VALUES
+('1-1', 1, 10000.00, 6666.67, 'pendiente', NULL, 1),
+('1-2', 2, 6666.67, 3333.33, 'pendiente', NULL, 1),
+('1-3', 3, 3333.33, 0.00, 'pendiente', NULL, 1),
+('2-1', 1, 15000.00, 11250.00, 'pendiente', NULL, 2),
+('2-2', 2, 11250.00, 7500.00, 'pendiente', NULL, 2),
+('2-3', 3, 7500.00, 3750.00, 'pendiente', NULL, 2),
+('2-4', 4, 3750.00, 0.00, 'pendiente', NULL, 2),
+('3-1', 1, 20000.00, 16000.00, 'pendiente', NULL, 3),
+('3-2', 2, 16000.00, 12000.00, 'pendiente', NULL, 3),
+('3-3', 3, 12000.00, 8000.00, 'pendiente', NULL, 3),
+('3-4', 4, 8000.00, 4000.00, 'pendiente', NULL, 3),
+('3-5', 5, 4000.00, 0.00, 'pendiente', NULL, 3),
+('4-1', 1, 25000.00, 16666.67, 'abonada', NULL, 4),
+('4-2', 2, 16666.67, 8333.33, 'abonada', NULL, 4),
+('4-3', 3, 8333.33, 0.00, 'abonada', '2024-12-09', 4),
+('5-1', 1, 12000.00, 9000.00, 'pendiente', NULL, 5),
+('5-2', 2, 9000.00, 6000.00, 'pendiente', NULL, 5),
+('5-3', 3, 6000.00, 3000.00, 'pendiente', NULL, 5),
+('5-4', 4, 3000.00, 0.00, 'pendiente', NULL, 5),
+('6-1', 1, 4000.00, 2000.00, 'abonada', NULL, 6),
+('6-2', 2, 2000.00, 0.00, 'abonada', '2024-12-09', 6);
 
 -- --------------------------------------------------------
 
@@ -199,8 +202,9 @@ INSERT INTO `prestamos` (`id_prestamo`, `monto`, `fecha_emision`, `cuotas`, `cuo
 (1, 10000.00, '2024-01-01', 3, 3333.33, 10.00, 1000.00, 2333.33, 'activo', NULL, 10001, 20001, 20002),
 (2, 15000.00, '2024-02-01', 4, 3750.00, 12.00, 1800.00, 1950.00, 'activo', NULL, 10002, 20003, 20004),
 (3, 20000.00, '2024-03-01', 5, 4000.00, 8.00, 1600.00, 2400.00, 'activo', NULL, 10003, 20005, 20002),
-(4, 25000.00, '2024-04-01', 3, 8333.33, 15.00, 3750.00, 4583.33, 'activo', NULL, 10004, 20001, 20005),
-(5, 12000.00, '2024-05-01', 4, 3000.00, 10.00, 1200.00, 1800.00, 'activo', NULL, 10005, 20002, 20003);
+(4, 25000.00, '2024-04-01', 3, 8333.33, 15.00, 3750.00, 4583.33, 'cancelado', '2024-12-09', 10004, 20001, 20005),
+(5, 12000.00, '2024-05-01', 4, 3000.00, 10.00, 1200.00, 1800.00, 'activo', NULL, 10005, 20002, 20003),
+(6, 4000.00, '2024-12-07', 2, 2040.00, 1.00, 40.00, 2000.00, 'cancelado', '2024-12-09', 10004, 20003, 20004);
 
 -- --------------------------------------------------------
 
@@ -414,7 +418,7 @@ ALTER TABLE `cuota_afiliacion`
 -- AUTO_INCREMENT de la tabla `prestamos`
 --
 ALTER TABLE `prestamos`
-  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitud_prestamo`
