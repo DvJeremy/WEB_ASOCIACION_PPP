@@ -1,3 +1,18 @@
+<?php 
+include("../BACKEND/CONEXION/conexion.php");
+
+// Consulta para obtener los tipos de socio
+$sql = "SELECT id_tipo_socio, tipo_socio FROM tipos_socios";
+$result = $conexion->query($sql);
+
+// Guardar resultados en un array
+$tipos_socio = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $tipos_socio[] = $row;
+    }}  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,23 +57,56 @@
                      <input class="form-control"  type="text" name="codigo" id="codigo" placeholder="Escribe tu nombre">
                      <label class="form-label"  for="campo_nombre">Código Universidad</label>          
                   </div>
+                  <div class="form-floating mb-2">
+                     <input class="form-control"  type="text" name="dependencia" id="campo_dependencia" placeholder="Escribir Dependencia">
+                     <label class="form-label"  for="campo_nombre">Dependencia</label>          
+                   </div>
+
                   <div class="form-group mb-3">
                      <label class="mb-2" for="exampleFormControlSelect1">Tipo Socio</label>
                      <select class="form-control" id="exampleFormControlSelect1" name="tipo_socio">
-                        <option value="Docente nombrado">Docente nombrado</option>
-                        <option value="Docente cesado">Docente cesado</option>
-                        <option value="Administrativo nombrado">Administrativo nombrado</option>
-                        <option value="Administrativo cesado">Administrativo cesado</option>
-                        <option value="Obrero">Obrero</option>
+                     <?php foreach ($tipos_socio as $tipo): ?>
+                         <option value="<?php echo $tipo['id_tipo_socio']; ?>">
+                     <?php echo htmlspecialchars($tipo['tipo_socio']); ?>
+                         </option>
+                     <?php endforeach; ?>
                      </select>
                   </div>
+
                   <div class="mb-3">
                     <label for="fechaRegistro" class="form-label">Fecha de Ingreso</label>
                     <input type="date" class="form-control" id="fechaRegistro" name="fecha" required>
                   </div>
+
+                  <div class="mb-3">
+                    <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+                  </div>
+
+                  <div class="form-floating mb-2">
+                     <input class="form-control"  type="text" name="contacto" id="campo_contacto" placeholder="Escribir Número de Contacto">
+                     <label class="form-label"  for="campo_contacto">Número Contacto</label>          
+                   </div>
+
              </div>
 
                <div class="col-md-6">
+
+                   <div class="form-floating mb-2">
+                     <input class="form-control"  type="text" name="distrito" id="campo_distrito" placeholder="Escribir Distrito">
+                     <label class="form-label"  for="campo_contacto">Distrito</label>          
+                   </div>
+
+
+                  <div class="form-floating mb-2">
+                     <input class="form-control"  type="text" name="domicilio" id="campo_domicilio" placeholder="Escribir Domicilio">
+                     <label class="form-label"  for="campo_nombre">Domicilio</label>          
+                   </div>
+
+                  <div class="form-floating mb-2">
+                     <input class="form-control"  type="text" name="correo" id="campo_correo" placeholder="Escribe correo">
+                     <label class="form-label"  for="campo_nombre">Correo</label>          
+                   </div>
 
                   <div class="form-floating mb-2">
                      <input class="form-control"  type="text" name="usuario" id="campo_usuario" placeholder="Escribe tu nombre">
