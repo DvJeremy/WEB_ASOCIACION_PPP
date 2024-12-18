@@ -11,6 +11,10 @@ $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0; // Paginación (
 $searchAportes = isset($_GET['search_aportes']) ? mysqli_real_escape_string($conexion, $_GET['search_aportes']) : '';
 $searchHistorial = isset($_GET['search_historial']) ? mysqli_real_escape_string($conexion, $_GET['search_historial']) : '';
 
+// Filtros de orden
+$orderBy = isset($_GET['orderBy']) ? $_GET['orderBy'] : 'DESC'; // Orden de aportes (ASC o DESC)
+$orderDate = isset($_GET['orderDate']) ? $_GET['orderDate'] : 'DESC'; // Orden de fecha (ASC o DESC)
+
 // Consulta 1: Aportes totales de los socios (con filtro de búsqueda y paginación)
 $queryAportes = "
     SELECT s.dni_socio, CONCAT(s.nombres, ' ', s.apellidos) AS nombre_completo, SUM(c.monto) AS aporte_total
@@ -18,7 +22,7 @@ $queryAportes = "
     JOIN socios s ON c.dni_socio = s.dni_socio
     WHERE s.nombres LIKE '%$searchAportes%' OR s.apellidos LIKE '%$searchAportes%' OR s.dni_socio LIKE '%$searchAportes%'
     GROUP BY s.dni_socio
-    ORDER BY aporte_total DESC
+    ORDER BY aporte_total $orderBy
     LIMIT $limit OFFSET $offset
 ";
 $resultAportes = mysqli_query($conexion, $queryAportes);
@@ -42,7 +46,7 @@ $queryHistorial = "
     FROM cuota_afiliacion c
     JOIN socios s ON c.dni_socio = s.dni_socio
     WHERE s.nombres LIKE '%$searchHistorial%' OR s.apellidos LIKE '%$searchHistorial%' OR c.dni_socio LIKE '%$searchHistorial%' 
-    ORDER BY c.fecha_pago DESC
+    ORDER BY c.fecha_pago $orderDate
     LIMIT $limit OFFSET $offset
 ";
 $resultHistorial = mysqli_query($conexion, $queryHistorial);

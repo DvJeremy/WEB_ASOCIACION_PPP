@@ -4,8 +4,12 @@ function cargarTablas() {
     const offset = document.getElementById('offset').value;
     const search = document.getElementById('search').value;
 
+    // Obtener valores para los filtros adicionales
+    const orderBy = document.getElementById('orderBy').value; // Orden de aportes
+    const orderDate = document.getElementById('orderDate').value; // Orden de fecha
+
     // Obtener los datos de aportes
-    fetch(`../ADMINISTRADOR/COMPONENTES_INFORMES/tablas_cbackend.php?limit=${limit}&offset=${offset}&search_aportes=${search}&search_historial=${search}`)
+    fetch(`../ADMINISTRADOR/COMPONENTES_INFORMES/tablas_cbackend.php?limit=${limit}&offset=${offset}&search_aportes=${search}&search_historial=${search}&orderBy=${orderBy}&orderDate=${orderDate}`)
         .then(response => response.json())
         .then(data => {
             if (data.aportes && data.historial) {
@@ -60,6 +64,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Manejo de la búsqueda
     document.getElementById('search').addEventListener('input', () => {
         cargarTablas(); // Recargar tablas cuando cambia el filtro de búsqueda
+    });
+
+    // Manejo del orden de los aportes
+    document.getElementById('orderBy').addEventListener('change', () => {
+        cargarTablas(); // Recargar tablas cuando cambia el orden de los aportes
+    });
+
+    // Manejo del orden de las fechas
+    document.getElementById('orderDate').addEventListener('change', () => {
+        cargarTablas(); // Recargar tablas cuando cambia el orden de las fechas
     });
 
     // Manejo de la paginación

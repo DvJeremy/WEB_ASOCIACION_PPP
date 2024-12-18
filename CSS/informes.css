@@ -1,72 +1,27 @@
-/* ------ INICIO CONTADORES ------ */
+
+.container {
+    margin-top: 30px;
+}
+.table-container {
+    max-height: 400px;
+    overflow-y: auto;
+}
 .card {
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.card-title {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-.card-text {
-    font-weight: bold;
-}
-/* ------ FIN CONTADORES ------ */
-
-/* ------ INICIO TABLA SOCIOS Y APORTES ------ */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 30px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-table th,
-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-table th {
-    background-color: #007bff;
-    color: #fff;
-}
-
-table td {
-    color: #495057;
-}
-
-table tr:nth-child(even) {
+.card-header {
     background-color: #f8f9fa;
-}
-
-table tr:hover {
-    background-color: #e9ecef;
-}
-
-.table-container {
-    margin-top: 30px;
-}
-/* ------ FIN TABLA SOCIOS Y APORTES ------ */
-
-/* ------ INICIO FILTROS ------ */
-.card .form-label {
     font-weight: bold;
-    margin-bottom: 8px;
 }
-
-.card .form-control,
-.card .form-select {
+.form-label {
+    font-weight: bold;
+}
+.form-select, .form-control {
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-.card .form-control:focus,
-.card .form-select:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+.row-gap {
+    gap: 20px;
 }
-/* ------ FIN FILTROS ------ */
-
+.table th, .table td {
+    text-align: center;
+}
