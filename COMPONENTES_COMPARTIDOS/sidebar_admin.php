@@ -59,7 +59,7 @@ if (isset($_SESSION['id'])) {
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../ADMINISTRADOR/informes_admin.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Informes">
+                <a class="nav-link" href="../ADMINISTRADOR/informes_c.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Informes">
                     <i class="bi bi-file-text me-2"></i>
                     <span>Informes</span>
                 </a>
