@@ -7,7 +7,7 @@
     <title>Informes de Cuotas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/componentes_compartidos.css">
-    <link rel="stylesheet" href="../CSS/informes.css">
+    <link rel="stylesheet" href="../CSS/informes_c.css">
 </head>
 
 <body>
