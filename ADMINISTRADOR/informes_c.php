@@ -39,113 +39,101 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <!-- Filtro y controles de paginación -->
-                <div class="col-12 mb-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>Informe de Aportes y Historial</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row row-gap">
-                                <!-- Filtro de búsqueda general -->
-                                <div class="col-md-3">
-                                    <label for="search" class="form-label">Buscar por DNI, Nombre o Apellido</label>
-                                    <input type="text" id="search" class="form-control" placeholder="Buscar...">
-                                </div>
-                                <!-- Filtro de número de registros -->
-                                <div class="col-md-2">
-                                    <label for="limit" class="form-label">Mostrar Registros</label>
-                                    <select id="limit" class="form-select">
-                                        <option value="5">5</option>
-                                        <option value="10">10</option>
-                                        <option value="15">15</option>
-                                        <option value="20">20</option>
-                                    </select>
-                                </div>
-                                <!-- Filtro de paginación -->
-                                <div class="col-md-2">
-                                    <label for="offset" class="form-label">Página</label>
-                                    <select id="offset" class="form-select">
-                                        <option value="0">1</option>
-                                        <option value="5">2</option>
-                                        <option value="10">3</option>
-                                        <option value="15">4</option>
-                                    </select>
-                                </div>
-                                <!-- Filtro de orden de aportes -->
-                                <div class="col-md-2">
-                                    <label for="orderBy" class="form-label">Orden de Aportes</label>
-                                    <select id="orderBy" class="form-select">
-                                        <option value="DESC">Descendente</option>
-                                        <option value="ASC">Ascendente</option>
-                                    </select>
-                                </div>
-                                <!-- Filtro de orden de fecha -->
-                                <div class="col-md-2">
-                                    <label for="orderDate" class="form-label">Orden de Fecha</label>
-                                    <select id="orderDate" class="form-select">
-                                        <option value="DESC">Descendente</option>
-                                        <option value="ASC">Ascendente</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+        <div class="container-fluid mt-4">
+        <!-- Filtros generales -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4>Filtros Generales</h4>
+            </div>
+            <div class="card-body">
+                <div class="row row-gap-3">
+                    <!-- Filtro de búsqueda general -->
+                    <div class="col-md-4">
+                        <label for="search" class="form-label">Buscar por DNI, Nombre o Apellido</label>
+                        <input type="text" id="search" class="form-control" placeholder="Buscar...">
                     </div>
-                </div>
-
-                <!-- Tabla de Aportes Totales -->
-                <div class="col-12">
-                    <div class="table-container">
-                        <div class="card mb-4">
-                            <div class="card-header bg-primary text-white">
-                                <h5>Aportes Totales de los Socios</h5>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-bordered table-hover">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>DNI</th>
-                                            <th>Nombre Completo</th>
-                                            <th>Aporte Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tablaAportesBody">
-                                        <!-- Aquí se cargarán los datos de los aportes -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <!-- Filtro de orden de aportes -->
+                    <div class="col-md-4">
+                        <label for="orderBy" class="form-label">Orden de Aportes Totales</label>
+                        <select id="orderBy" class="form-select">
+                            <option value="DESC">Mayor a menor</option>
+                            <option value="ASC">Menor a mayor</option>
+                        </select>
                     </div>
-                </div>
-
-                <!-- Tabla de Historial de Pagos -->
-                <div class="col-12 mt-4">
-                    <div class="table-container">
-                        <div class="card mb-4">
-                            <div class="card-header bg-success text-white">
-                                <h5>Historial de Pagos</h5>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-bordered table-hover">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>Nombre Completo</th>
-                                            <th>Fecha de Pago</th>
-                                            <th>Monto</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tablaHistorialBody">
-                                        <!-- Aquí se cargarán los datos del historial de pagos -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <!-- Filtro de orden de fechas -->
+                    <div class="col-md-4">
+                        <label for="orderDate" class="form-label">Orden por Fecha de Pagos</label>
+                        <select id="orderDate" class="form-select">
+                            <option value="DESC">Más recientes</option>
+                            <option value="ASC">Más antiguos</option>
+                        </select>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Tabla de Aportes -->
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">
+                <h4>Aportes Totales</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>DNI</th>
+                                <th>Nombre Completo</th>
+                                <th>Total Aportado (S/)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaAportesBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de Historial -->
+        <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+                <h4>Historial de Pagos</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Fecha de Pago</th>
+                                <th>Monto (S/)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaHistorialBody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Filtros específicos de agrupación -->
+            <div class="card-footer bg-light">
+                <div class="row">
+                    <!-- Límite de registros -->
+                    <div class="col-md-4">
+                        <label for="limitHistorial" class="form-label">Registros por Página</label>
+                        <select id="limitHistorial" class="form-select">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                    <!-- Paginación -->
+                    <div class="col-md-4">
+                        <label for="offsetHistorial" class="form-label">Página</label>
+                        <select id="offsetHistorial" class="form-select"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     </div>
 
