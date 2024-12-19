@@ -1,0 +1,151 @@
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Mejorar el contorno de las tablas */
+.table {
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+/* Estilo para los encabezados de las tablas */
+.table th {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+}
+
+/* Estilo para las filas alternadas en la tabla */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Para mejorar la visibilidad de los bordes */
+.table-bordered td, .table-bordered th {
+    border: 1px solid #dee2e6;
+}
+
+/* Asegurarse de que las tablas sean responsivas */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Estilo para la barra de búsqueda */
+#filterInput {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Mejorar el espaciado y estilo de las celdas */
+.table td, .table th {
+    padding: 10px;
+}
+
+/* Mejorar el encabezado de la fecha en el historial */
+.table-info {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/*FIN TABLAS*/
+
+.socio-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.prestamos-container {
+    display: flex;
+    flex-wrap: nowrap; /* Para evitar que los préstamos se acomoden verticalmente */
+    gap: 15px;
+    overflow-x: auto; /* Agregar scroll horizontal si hay muchos préstamos */
+    max-width: 100%; /* Asegurarse de que el contenedor no exceda el ancho */
+}
+
+.prestamo-activo, .prestamo-cancelado {
+    background-color: #f8f9fa;
+    padding: 5px;
+    border-radius: 8px;
+    width: 200px; /* Cambiar el ancho a 200px */
+    height: 160px; /* Cambiar la altura a 160px */
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegurar que la información se distribuya bien */
+}
+
+.prestamo-activo {
+    border-left: 5px solid green;
+}
+
+.prestamo-cancelado {
+    border-left: 5px solid red;
+}
+
+button.more-info-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+    font-size: 12px; /* Ajustar el tamaño del botón */
+}
+
+button.more-info-btn:hover {
+    background-color: #0056b3;
+}
+
+.socio-container h4 {
+    font-size: 16px; /* Reducir tamaño de texto */
+}
+
+.prestamo-activo p, .prestamo-cancelado p {
+    font-size: 12px; /* Reducir tamaño de texto para las descripciones */
+    margin: 0;
+}
+
+.socio-header {
+    display: flex;
+    justify-content: space-between; /* Espacio entre los elementos */
+    padding-bottom: 10px;
+}
+
+.socio-info {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.prestamos-count {
+    font-size: 14px;
+    color: #666;
+}
+
+.prestamos-count {
+    font-size: 14px;
+    color: #666;
+}
+
+.prestamos-count span.total {
+    font-weight: bold;
+    color: #333;
+}
