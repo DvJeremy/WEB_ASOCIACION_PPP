@@ -24,7 +24,7 @@ if (isset($_POST['btnEntrar'])){
            $_SESSION["us"]= $row['tipo_usuario'];
 
            if ($_SESSION["us"]='Admin'){
-            header("Location: ../ADMINISTRADOR/index_administrador.php");
+            header("Location: ../ADMINISTRADOR/informes_c.php.php");
            }elseif ($_SESSION["us"]='Usuario'){
             header("Location: ../USUARIO/index_usuario.php");
            }
