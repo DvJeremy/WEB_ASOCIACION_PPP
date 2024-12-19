@@ -1,0 +1,108 @@
+/* Ajuste del diseño para los filtros y tablas */
+.table-responsive {
+    margin-top: 10px;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.input-group-text {
+    width: 40px;
+    text-align: center;
+}
+
+input.form-control {
+    height: 38px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Estilo para los tags */
+#tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tag {
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.tag span.remove-tag {
+    margin-left: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+
+/* Estilo para los filtros */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group-text {
+    background-color: #f8f9fa;
+}
+
+input.form-control {
+    font-size: 14px;
+    padding: 8px;
+}
+
+/* Ajustar el contenedor de tablas */
+table {
+    font-size: 14px;
+}
+
+/* Estilo general de las tablas */
+table th, table td {
+    vertical-align: middle;
+    text-align: left;
+    padding: 8px;
+}
+
+table td button {
+    font-size: 14px;
+}
+
+/* Espaciado entre las tablas */
+.col-md-6 {
+    margin-bottom: 20px;
+}
+
+/* Agregar bordes y separaciones en las tablas */
+table.table-bordered {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Ajustes de diseño para tags */
+#tagsContainer .tag {
+    background-color: #e9ecef;
+    border-radius: 25px;
+    padding: 5px 15px;
+    font-size: 14px;
+    color: #495057;
+}
+
+#tagsContainer .remove-tag {
+    margin-left: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
