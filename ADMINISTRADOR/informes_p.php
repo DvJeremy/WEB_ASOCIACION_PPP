@@ -60,7 +60,18 @@
 
         <div class="container mt-5">
             <h3 class="text-center">Informe de Préstamos</h3>
-            <input type="text" id="filterInput" class="form-control" placeholder="Buscar por socio (DNI, nombre)">
+            
+            <div class="container mt-3">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                            <input type="text" id="filterInput" class="form-control" placeholder="Buscar por DNI, nombre o apellido" aria-label="Buscar" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="contenedorSocios" class="mt-4"></div>
         </div>
 

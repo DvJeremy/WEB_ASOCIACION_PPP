@@ -9,7 +9,7 @@ if (!$conexion) {
 // Filtro de búsqueda (si se proporciona)
 $filter = isset($_GET['filter']) ? "%" . $_GET['filter'] . "%" : '%';
 
-// Consulta SQL que obtiene los préstamos activos y cancelados
+// Consulta SQL que obtiene los préstamos activos y cancelados, con filtro por nombre, apellidos o DNI
 $query = "
     SELECT s.dni_socio, CONCAT(s.nombres, ' ', s.apellidos) AS socio, 
            p.id_prestamo, p.monto, p.fecha_emision, p.fecha_finalizacion, p.estado_prestamo

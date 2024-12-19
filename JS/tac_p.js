@@ -1,6 +1,6 @@
 // Función para cargar los préstamos
 function cargarPrestamos() {
-    const filter = document.getElementById('filterInput').value;
+    const filter = document.getElementById('filterInput').value.trim(); // Obtener filtro y eliminar espacios extra
 
     // Realizar la solicitud al backend
     fetch(`../ADMINISTRADOR/COMPONENTES_INFORMES/tac_pbackend.php?filter=${filter}`)
@@ -80,6 +80,9 @@ function cargarPrestamosPorSocio(activos, cancelados) {
         `;
         contenedorSocios.appendChild(div);
     }
+
+    // Filtrar los divs según el texto introducido en el input
+    filterDivs(filter);
 }
 
 // Función para generar el HTML de los préstamos
@@ -100,6 +103,19 @@ function generatePrestamosHTML(prestamos, tipo) {
         `;
     });
     return prestamosHTML;
+}
+
+// Función para filtrar los divs generados
+function filterDivs(filter) {
+    const sociosDivs = document.querySelectorAll('.socio-container');
+    sociosDivs.forEach(div => {
+        const socioInfo = div.querySelector('.socio-info').textContent.toLowerCase();
+        if (socioInfo.includes(filter.toLowerCase())) {
+            div.style.display = ''; // Mostrar div si cumple con el filtro
+        } else {
+            div.style.display = 'none'; // Ocultar div si no cumple con el filtro
+        }
+    });
 }
 
 // Llamar a la función cuando se carga la página
