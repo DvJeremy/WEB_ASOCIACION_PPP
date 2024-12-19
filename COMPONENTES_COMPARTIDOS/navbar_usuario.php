@@ -1,7 +1,7 @@
 <!-- Navbar Superior -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">ASOCIACION HI-COSAN</a>
+        <a class="navbar-brand" href="#">ASOCIACION SIN FINES DE LUCRO FFIPCOSAN</a>
         
         <div class="ms-auto">
             <div class="dropdown">

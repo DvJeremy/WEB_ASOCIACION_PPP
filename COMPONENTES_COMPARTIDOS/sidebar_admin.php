@@ -58,10 +58,23 @@ if (isset($_SESSION['id'])) {
                     <span>Administrar</span>
                 </a>
             </li>
+        </ul>
+    </div>
+
+    <!-- INTERFACE -->
+    <div class="sidebar-section">
+        <div class="sidebar-heading">INFORMES</div>
+        <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="../ADMINISTRADOR/informes_c.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Informes">
+                <a class="nav-link" href="../ADMINISTRADOR/informes_c.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Contribucion">
                     <i class="bi bi-file-text me-2"></i>
-                    <span>Informes</span>
+                    <span>Contribucion</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../ADMINISTRADOR/informes_p.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Prestamos">
+                    <i class="bi bi-file-text me-2"></i>
+                    <span>Prestamos</span>
                 </a>
             </li>
         </ul>
@@ -79,13 +92,13 @@ if (isset($_SESSION['id'])) {
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../ADMINISTRADOR/recaudar.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Recaudar">
-                    <i class="bi bi-file-text me-2"></i>
+                    <i class="bi bi bi-bank2 me-2"></i>
                     <span>Recaudar</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../ADMINISTRADOR/cobrar_prestamo.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Cobrar prestamo">
-                    <i class="bi bi-file-text me-2"></i>
+                    <i class="bi bi bi-bank2 me-2"></i>
                     <span>Cobrar prestamo</span>
                 </a>
             </li>
