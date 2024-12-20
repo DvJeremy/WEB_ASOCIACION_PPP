@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-12-2024 a las 09:22:49
+-- Tiempo de generación: 20-12-2024 a las 03:06:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -153,7 +153,11 @@ INSERT INTO `informacion_prestamo` (`id_cuota`, `n°_cuota`, `saldo_inicial`, `s
 ('1-1', 1, 10000.00, 6666.67, 'pendiente', NULL, 1),
 ('1-2', 2, 6666.67, 3333.33, 'pendiente', NULL, 1),
 ('1-3', 3, 3333.33, 0.00, 'pendiente', NULL, 1),
-('2-1', 1, 15000.00, 11250.00, 'pendiente', NULL, 2),
+('11-1', 1, 10000.00, 4900.00, 'pendiente', NULL, 11),
+('11-2', 2, 4900.00, -200.00, 'pendiente', NULL, 11),
+('12-1', 1, 10000.00, 5000.00, 'pendiente', NULL, 12),
+('12-2', 2, 5000.00, 0.00, 'pendiente', NULL, 12),
+('2-1', 1, 15000.00, 11250.00, 'abonada', '2024-10-09', 2),
 ('2-2', 2, 11250.00, 7500.00, 'pendiente', NULL, 2),
 ('2-3', 3, 7500.00, 3750.00, 'pendiente', NULL, 2),
 ('2-4', 4, 3750.00, 0.00, 'pendiente', NULL, 2),
@@ -162,14 +166,14 @@ INSERT INTO `informacion_prestamo` (`id_cuota`, `n°_cuota`, `saldo_inicial`, `s
 ('3-3', 3, 12000.00, 8000.00, 'pendiente', NULL, 3),
 ('3-4', 4, 8000.00, 4000.00, 'pendiente', NULL, 3),
 ('3-5', 5, 4000.00, 0.00, 'pendiente', NULL, 3),
-('4-1', 1, 25000.00, 16666.67, 'abonada', NULL, 4),
-('4-2', 2, 16666.67, 8333.33, 'abonada', NULL, 4),
+('4-1', 1, 25000.00, 16666.67, 'abonada', '2024-10-09', 4),
+('4-2', 2, 16666.67, 8333.33, 'abonada', '2024-11-09', 4),
 ('4-3', 3, 8333.33, 0.00, 'abonada', '2024-12-09', 4),
 ('5-1', 1, 12000.00, 9000.00, 'pendiente', NULL, 5),
 ('5-2', 2, 9000.00, 6000.00, 'pendiente', NULL, 5),
 ('5-3', 3, 6000.00, 3000.00, 'pendiente', NULL, 5),
 ('5-4', 4, 3000.00, 0.00, 'pendiente', NULL, 5),
-('6-1', 1, 4000.00, 2000.00, 'abonada', NULL, 6),
+('6-1', 1, 4000.00, 2000.00, 'abonada', '2024-11-09', 6),
 ('6-2', 2, 2000.00, 0.00, 'abonada', '2024-12-09', 6);
 
 -- --------------------------------------------------------
@@ -204,7 +208,85 @@ INSERT INTO `prestamos` (`id_prestamo`, `monto`, `fecha_emision`, `cuotas`, `cuo
 (3, 20000.00, '2024-03-01', 5, 4000.00, 8.00, 1600.00, 2400.00, 'activo', NULL, 10003, 20005, 20002),
 (4, 25000.00, '2024-04-01', 3, 8333.33, 15.00, 3750.00, 4583.33, 'cancelado', '2024-12-09', 10004, 20001, 20005),
 (5, 12000.00, '2024-05-01', 4, 3000.00, 10.00, 1200.00, 1800.00, 'activo', NULL, 10005, 20002, 20003),
-(6, 4000.00, '2024-12-07', 2, 2040.00, 1.00, 40.00, 2000.00, 'cancelado', '2024-12-09', 10004, 20003, 20004);
+(6, 4000.00, '2024-12-07', 2, 2040.00, 1.00, 40.00, 2000.00, 'cancelado', '2024-12-09', 10004, 20003, 20004),
+(7, 7000.00, '2024-12-07', 2, 2040.00, 1.00, 40.00, 2000.00, 'cancelado', '2024-12-09', 10004, 20003, 20004),
+(11, 10000.00, '2024-12-20', 2, 5100.00, 1.00, 100.00, 5000.00, '0', NULL, 943848434, 20005, 20003),
+(12, 10000.00, '2024-12-20', 2, 5100.00, 1.00, 100.00, 5000.00, '0', NULL, 943848434, 20005, 20003);
+
+--
+-- Disparadores `prestamos`
+--
+DELIMITER $$
+CREATE TRIGGER `insertar_detalle_cuotas` AFTER INSERT ON `prestamos` FOR EACH ROW BEGIN
+    DECLARE saldo_inicial DECIMAL(10,2);
+    DECLARE saldo_final DECIMAL(10,2);
+    DECLARE cuota_mensual DECIMAL(10,2);
+    DECLARE amortizacion DECIMAL(10,2);
+    DECLARE interes DECIMAL(10,2);
+    DECLARE n INT DEFAULT 1;
+
+    -- Obtener el monto del préstamo, cuota mensual, amortización e interés
+    SET saldo_inicial = NEW.monto;
+    SET cuota_mensual = NEW.cuota_mensual;
+    SET amortizacion = NEW.amortizacion;
+    SET interes = NEW.interes;
+
+    -- Insertar el detalle de la primera cuota
+    SET saldo_final = saldo_inicial - amortizacion;
+
+    INSERT INTO informacion_prestamo (
+        id_cuota, 
+        n°_cuota, 
+        saldo_inicial, 
+        saldo_final, 
+        estado_cuota, 
+        fecha_cobro, 
+        id_prestamo
+    ) VALUES (
+        CONCAT(NEW.id_prestamo, '-', n), -- id_cuota generado con el id_prestamo y el número de cuota
+        n,                                -- Número de cuota
+        saldo_inicial,                    -- Saldo inicial de la cuota
+        saldo_final,                      -- Saldo final de la cuota
+        'pendiente',                      -- Estado de la cuota
+        NULL,                             -- Fecha de cobro (NULL en este caso)
+        NEW.id_prestamo                  -- id_prestamo de la tabla prestamos
+    );
+
+    -- Actualizar saldo_inicial para las siguientes cuotas
+    SET saldo_inicial = saldo_final;
+
+    -- Insertar las cuotas siguientes
+    WHILE n < NEW.cuotas DO
+        SET n = n + 1;
+        
+        -- Para las cuotas posteriores, el saldo final debe ser el saldo inicial menos la amortización
+        SET saldo_final = saldo_inicial - amortizacion;
+
+        -- Insertar el detalle de la cuota
+        INSERT INTO informacion_prestamo (
+            id_cuota, 
+            n°_cuota, 
+            saldo_inicial, 
+            saldo_final, 
+            estado_cuota, 
+            fecha_cobro, 
+            id_prestamo
+        ) VALUES (
+            CONCAT(NEW.id_prestamo, '-', n), -- id_cuota generado con el id_prestamo y el número de cuota
+            n,                                -- Número de cuota
+            saldo_inicial,                    -- Saldo inicial de la cuota
+            saldo_final,                      -- Saldo final de la cuota
+            'pendiente',                      -- Estado de la cuota
+            NULL,                             -- Fecha de cobro (NULL en este caso)
+            NEW.id_prestamo                  -- id_prestamo de la tabla prestamos
+        );
+
+        -- Actualizar el saldo inicial para la siguiente cuota
+        SET saldo_inicial = saldo_final;
+    END WHILE;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -222,7 +304,7 @@ CREATE TABLE `socios` (
   `dependencia` varchar(50) DEFAULT NULL,
   `id_tipo_socio` int(11) DEFAULT NULL,
   `correo` varchar(50) DEFAULT NULL,
-  `fecha_nacimiento` varchar(50) DEFAULT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
   `domicilio` varchar(50) DEFAULT NULL,
   `distrito` varchar(50) DEFAULT NULL,
   `num_contacto` int(11) DEFAULT NULL
@@ -237,7 +319,8 @@ INSERT INTO `socios` (`dni_socio`, `nombres`, `apellidos`, `fecha_ingreso`, `num
 (10002, 'Maria', 'Lopez', '2020-06-10', '2345678901', 'UNI002', NULL, 2, NULL, NULL, NULL, NULL, NULL),
 (10003, 'Luis', 'Garcia', '2019-11-20', '3456789012', 'UNI003', NULL, 3, NULL, NULL, NULL, NULL, NULL),
 (10004, 'Ana', 'Torres', '2022-03-25', '4567890123', 'UNI004', NULL, 4, NULL, NULL, NULL, NULL, NULL),
-(10005, 'Carlos', 'Sanchez', '2018-09-05', '5678901234', 'UNI005', NULL, 5, NULL, NULL, NULL, NULL, NULL);
+(10005, 'Carlos', 'Sanchez', '2018-09-05', '5678901234', 'UNI005', NULL, 5, NULL, NULL, NULL, NULL, NULL),
+(943848434, 'jeremy', 'rojas', '2024-12-11', '45355353535', '2342424', 'aea', 3, '435353', '2013-01-18', '353535', '43434', 453535345);
 
 -- --------------------------------------------------------
 
@@ -306,7 +389,7 @@ INSERT INTO `tipos_socios` (`id_tipo_socio`, `tipo_socio`) VALUES
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `contra` varchar(60) NOT NULL,
+  `contra` varchar(250) NOT NULL,
   `tipo_usuario` varchar(50) DEFAULT NULL,
   `dni_socio` int(11) DEFAULT NULL,
   `estado_usuario` varchar(50) DEFAULT NULL
@@ -321,7 +404,8 @@ INSERT INTO `usuarios` (`id_usuario`, `username`, `contra`, `tipo_usuario`, `dni
 (2, 'mlopez', 'abcd1234', 'Usuario', 10002, 'Activo'),
 (3, 'lgarcia', 'xyz9876', 'Usuario', 10003, 'Inactivo'),
 (4, 'atorres', 'pqrs5678', 'Usuario', 10004, 'Activo'),
-(5, 'csanchez', 'mnop3456', 'Usuario', 10005, 'Activo');
+(5, 'csanchez', 'mnop3456', 'Usuario', 10005, 'Activo'),
+(6, 'jusuario123', '$2y$10$of4z.w5LgT26my0qff4flO45LITgd2lmfBpEeXiJFa3xUGE5P03EK', 'Admin', 943848434, 'Activo');
 
 --
 -- Índices para tablas volcadas
@@ -418,7 +502,7 @@ ALTER TABLE `cuota_afiliacion`
 -- AUTO_INCREMENT de la tabla `prestamos`
 --
 ALTER TABLE `prestamos`
-  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitud_prestamo`
@@ -436,7 +520,7 @@ ALTER TABLE `tipos_socios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
