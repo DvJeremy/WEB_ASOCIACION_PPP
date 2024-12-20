@@ -1,5 +1,6 @@
 // ----------- SIMULADOR ADMIN -----------
 
+// Evento para cuando se carga el DOM
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('loanForm');
     const installmentsInput = document.getElementById('installments');
@@ -86,10 +87,69 @@ document.addEventListener('DOMContentLoaded', function() {
         resultsHTML += `
                         </tbody>
                     </table>
+                    <button id="generateLoan" class="btn btn-primary w-100">Generar Préstamo</button>
                 </div>
             </div>
         `;
 
         resultsDiv.innerHTML = resultsHTML;
+
+        // Agregar evento para generar el préstamo
+        document.getElementById('generateLoan').addEventListener('click', function() {
+            const confirmation = confirm('¿Desea continuar con la generación del préstamo?');
+            if (confirmation) {
+                // Obtener los datos necesarios para el préstamo
+                const tags = document.querySelectorAll('.tag');
+                const socio = Array.from(tags).find(tag => tag.querySelector('.remove-tag[data-type="socio"]'));
+                const garantes = Array.from(tags)
+                    .map(tag => tag.querySelector('.remove-tag[data-type="garante"]'))
+                    .filter(Boolean);
+
+                console.log('Socio:', socio ? socio.querySelector('.remove-tag').dataset.dni : 'No se seleccionó socio');
+                console.log('Garantes:', garantes.map(garante => garante.dataset.dni));
+
+                // Datos para enviar al backend
+                const data = {
+                    monto: amount,
+                    cuotas: installments,
+                    cuotaMensual: monthlyPayment.toFixed(2),
+                    tasa: interestRate * 100,
+                    interes: interest.toFixed(2),
+                    amortizacion: amortization.toFixed(2),
+                    dniSocio: socio ? socio.querySelector('.remove-tag').dataset.dni : null,
+                    dniGarante1: garantes.length > 0 ? garantes[0].dataset.dni : null,
+                    dniGarante2: garantes.length > 1 ? garantes[1].dataset.dni : null,
+                    cuotasDetalles: [] // Aquí irán los detalles de cada cuota
+                };
+
+                // Preparar detalles de cuotas
+                let balance = amount;
+                for (let i = 1; i <= installments; i++) {
+                    const finalBalance = balance - amortization;
+                    data.cuotasDetalles.push({
+                        numeroCuota: i,
+                        saldoInicial: balance.toFixed(2),
+                        saldoFinal: finalBalance.toFixed(2)
+                    });
+                    balance = finalBalance;
+                }
+
+                // Enviar los datos al backend
+                fetch('../ADMINISTRADOR/simular_pbackend.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.status === 'success') {
+                        alert('Préstamo generado con éxito');
+                    } else {
+                        alert('Hubo un error al generar el préstamo: ' + response.message);
+                    }
+                })
+                .catch(error => alert('Error en la conexión: ' + error));
+            }
+        });
     });
 });

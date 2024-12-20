@@ -77,11 +77,14 @@
             <!-- Los tags dinámicos aparecerán aquí -->
         </div>
     </div>
+    
+    <?php include '../COMPONENTES_COMPARTIDOS/simulador.php'; ?>
 
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../JS/generar_p.js"></script>
+    <script src="../JS/simular_admin.js"></script>
 
 </body>
 </html>

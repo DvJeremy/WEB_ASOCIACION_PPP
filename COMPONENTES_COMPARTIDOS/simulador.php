@@ -5,7 +5,7 @@
             <div class="col-md-6">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h2 class="card-title text-center mb-4">¡Simula tus cuotas!</h2>
+                        <h2 class="card-title text-center mb-4">¡Genera tus cuotas!</h2>
                         <form id="loanForm">
                             <div class="mb-3">
                                 <label for="amount" class="form-label">Monto (Soles)</label>
