@@ -53,7 +53,7 @@ if (isset($_SESSION['id'])) {
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Administrar">
+                <a class="nav-link" href="../ADMINISTRADOR/crud_usuario.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Administrar">
                     <i class="bi bi-table me-2"></i>
                     <span>Administrar</span>
                 </a>
