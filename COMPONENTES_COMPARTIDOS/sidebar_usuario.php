@@ -27,21 +27,23 @@ if (isset($_SESSION['id'])) {
 <div class="sidebar" id="sidebar">
     <!-- CORE -->
     <div class="sidebar-section">
-    <div class="sidebar-section">
-        <div class="sidebar-heading">BIENVENIDO
-        <div style="margin-top: 10px;">
-        <li style="color: white; font-weight: bold; list-style: none;font-family:Century Gothic;">
-        <i class="bi bi-person-lines-fill me-2"></i>
-            | 
-            <?php if (isset($texto)) {
-                        echo $texto;
-                    } ?></li></div>
+        <div class="sidebar-section">
+            <div class="sidebar-heading">BIENVENIDO
+                <div style="margin-top: 10px;">
+                    <li style="color: white; font-weight: bold; list-style: none;font-family:Century Gothic;">
+                        <i class="bi bi-person-lines-fill me-2"></i>
+                        |
+                        <?php if (isset($texto)) {
+                            echo $texto;
+                        } ?>
+                    </li>
+                </div>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                </li>
+            </ul>
         </div>
-        <ul class="nav flex-column">
-            <li class="nav-item">      
-            </li>
-        </ul>
-     </div>
 
         <div class="sidebar-heading">CORE</div>
         <ul class="nav flex-column">
@@ -49,6 +51,19 @@ if (isset($_SESSION['id'])) {
                 <a class="nav-link " href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
                     <i class="bi bi-speedometer2 me-2"></i>
                     <span>Dashboard</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- New sección registro familiar -->
+    <div class="sidebar-section">
+        <div class="sidebar-heading">FAMILIAR</div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="../USUARIO/registro_familiar.php" data-bs-toggle="tooltip" data-bs-placement="right" title="Registro Familiar">
+                    <i class="bi bi-people me-2"></i>
+                    <span>Registro Familiar</span>
                 </a>
             </li>
         </ul>

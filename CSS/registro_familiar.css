@@ -1,0 +1,21 @@
+/* registro_familiar.css */
+
+/* Limita la altura del desplegable de edades */
+#campo_edad {
+    max-height: 500px; /* Altura máxima del desplegable */
+    overflow-y: auto; /* Permite scroll si es necesario */
+}
+
+/* Personalización del scrollbar */
+#campo_edad::-webkit-scrollbar {
+    width: 6px;
+}
+
+#campo_edad::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#campo_edad::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 20px;
+}
